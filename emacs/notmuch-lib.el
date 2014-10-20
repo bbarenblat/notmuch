@@ -465,6 +465,14 @@ This replaces spaces, percents, and double quotes in STR with
     (kill-new "")
     (message "Nothing to stash!")))
 
+(defun notmuch-common-selective-display-string ()
+  "Determine the selective display string for the current buffer.
+This is usually `...', but it can be reset."
+  (display-table-slot (or (window-display-table)
+			  buffer-display-table
+			  standard-display-table)
+		      'selective-display))
+
 ;;
 
 (defun notmuch-remove-if-not (predicate list)

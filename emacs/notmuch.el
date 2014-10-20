@@ -689,6 +689,7 @@ non-authors is found, assume that all of the authors match."
   (save-match-data
     (let* ((formatted-authors (format format-string authors))
 	   (formatted-sample (format format-string ""))
+	   (selective-display-string (notmuch-common-selective-display-string))
 	   (visible-string formatted-authors)
 	   (invisible-string "")
 	   (padding ""))
@@ -697,7 +698,7 @@ non-authors is found, assume that all of the authors match."
       (if (> (length formatted-authors)
 	     (length formatted-sample))
 	  (let ((visible-length (- (length formatted-sample)
-				   (length "... "))))
+				   (length (concat selective-display-string " ")))))
 	    ;; Truncate the visible string according to the width of
 	    ;; the display string.
 	    (setq visible-string (substring formatted-authors 0 visible-length)
@@ -717,7 +718,7 @@ non-authors is found, assume that all of the authors match."
 	    ;; after `invisible-string'.
 	    (setq padding (make-string (- (length formatted-sample)
 					  (length visible-string)
-					  (length "..."))
+					  (length selective-display-string))
 				       ? ))))
 
       ;; Use different faces to show matching and non-matching authors.

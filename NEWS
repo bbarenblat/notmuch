@@ -16,6 +16,13 @@ Expanded default saved search settings
   The default saved searches now include several more common searches,
   as well as shortcut keys for `notmuch-jump`.
 
+Use the display table to determine the ellipsis characters
+
+  Notmuch now examines the Emacs display table to determine the
+  characters it will use when eliding text from lengthy fields (e.g.,
+  the author field in search mode).  Thus, if you prefer some string
+  other than `...`, notmuch will use it.
+
 Library changes
 ---------------
 

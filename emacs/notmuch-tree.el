@@ -669,7 +669,7 @@ unchanged ADDRESS if parsing fails."
 	(setq notmuch-tree-previous-subject bare-subject)
 	(propertize (format format-string
 			    (if (string= previous-subject bare-subject)
-				" ..."
+				(concat " " selective-display-string)
 			      bare-subject))
 		    'face face)))
 
